@@ -1,6 +1,6 @@
 # Automated 10-Question Evaluation Results
 
-**Test Date:** 2026-11-19 16:00:28  
+**Test Date:** 2026-11-19 19:55:46  
 **Overall Status:** ✅ **ALL 10 TESTS PASSED (100% Success Rate)**
 
 ## Summary Table
@@ -11,8 +11,8 @@
 | 2 | **HR Policy RAG: WFH Eligibility** | `rag` | `PASSED` | ✅ PASS | 0.00s |
 | 3 | **IT Policy RAG: VPN & MFA Setup** | `rag` | `PASSED` | ✅ PASS | 0.00s |
 | 4 | **IT Policy RAG: Laptop Replacement Cycle** | `rag` | `PASSED` | ✅ PASS | 0.00s |
-| 5 | **Employee MCP: EMP101 Leave Balance** | `mcp_db` | `PASSED` | ✅ PASS | 2.04s |
-| 6 | **Employee MCP: EMP102 Laptop & Tickets** | `mcp_db` | `PASSED` | ✅ PASS | 0.00s |
+| 5 | **Employee MCP: EMP101 Leave Balance** | `mcp_db` | `PASSED` | ✅ PASS | 0.05s |
+| 6 | **Employee MCP: EMP102 Laptop & Tickets** | `mcp_db` | `PASSED` | ✅ PASS | 0.01s |
 | 7 | **Non-Existent Employee MCP: EMP999** | `mcp_db` | `PASSED` | ✅ PASS | 0.00s |
 | 8 | **Guardrail Refusal: Out of Scope** | `blocked` | `BLOCKED` | ✅ PASS | 0.00s |
 | 9 | **Guardrail Security: Prompt Injection** | `blocked` | `BLOCKED` | ✅ PASS | 0.00s |

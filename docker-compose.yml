@@ -20,5 +20,28 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hr_it_helpdesk_app
+    restart: always
+    ports:
+      - "8501:8501"
+    environment:
+      - DB_HOST=hr_it_helpdesk_db
+      - DB_PORT=5432
+      - DB_NAME=hr_it_helpdesk
+      - DB_USER=helpdesk_user
+      - DB_PASSWORD=helpdesk_pass
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - LLM_PROVIDER=${LLM_PROVIDER:-gemini}
+      - LLM_MODEL=${LLM_MODEL:-gemini-2.5-flash}
+    depends_on:
+      hr_it_helpdesk_db:
+        condition: service_healthy
+
 volumes:
   pgdata:

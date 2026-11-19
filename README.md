@@ -166,6 +166,40 @@ python src/app.py --cli-interactive
 
 ---
 
+## 🚢 Deployment Guide
+
+### Option 1: Docker Compose (Full Stack: App + PostgreSQL)
+Deploy the full enterprise stack with a single command:
+```bash
+docker-compose up -d --build
+```
+This builds and launches:
+- `hr_it_helpdesk_db`: PostgreSQL 16 container with auto-initialized schema and seed records from `db/init.sql`.
+- `hr_it_helpdesk_app`: Production Streamlit container running on `http://localhost:8501`.
+
+To stop the deployment:
+```bash
+docker-compose down
+```
+
+### Option 2: Streamlit Community Cloud (Zero-Cost Cloud Deployment)
+1. Push your repository to GitHub.
+2. Sign in to [share.streamlit.io](https://share.streamlit.io/).
+3. Click **"New App"** and select:
+   - **Repository:** `chakradhar2004/HR-IT-Helpdesk-AI-Agent`
+   - **Branch:** `main`
+   - **Main file path:** `src/app.py`
+4. Under **Advanced Settings**, add Secrets (e.g. `GEMINI_API_KEY = "your_key"`).
+5. Click **Deploy!** (The app will automatically use its internal SQLite fallback database with all seed records if no external PostgreSQL host is configured).
+
+### Option 3: Render / Railway / Fly.io / Cloud Run
+1. Connect your GitHub repository to Render or Railway.
+2. Select **Dockerfile** as the build method (or Web Service with start command `streamlit run src/app.py`).
+3. Set environment variables (`GEMINI_API_KEY`, etc.).
+4. Expose port `8501` (or map `$PORT`).
+
+---
+
 ## 🧪 10-Scenario Automated Evaluation Suite
 
 Execute the test suite to validate all 10 scenarios:
