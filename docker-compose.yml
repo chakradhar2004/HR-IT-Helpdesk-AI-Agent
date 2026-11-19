@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  hr_it_helpdesk_db:
+    image: postgres:16-alpine
+    container_name: hr_it_helpdesk_db
+    restart: always
+    environment:
+      POSTGRES_DB: hr_it_helpdesk
+      POSTGRES_USER: helpdesk_user
+      POSTGRES_PASSWORD: helpdesk_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U helpdesk_user -d hr_it_helpdesk"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
